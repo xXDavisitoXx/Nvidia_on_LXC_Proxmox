@@ -76,5 +76,43 @@ video                  77824  1 nvidia_modeset
 nvidia/580.196.07, 7.0.14-26-pve, x86_64: installed
 
  ```
+LXC: 
 
-n
+create your LXC first
+```bash
+apt update
+apt dist-upgrade
+reboot
+```
+and shutdown the machine
+
+## NVIDIA GPU Passthrough Setup for LXC (Proxmox VE)
+
+To map the NVIDIA GPU devices to the unprivileged container, add each of the following device nodes via the Proxmox web interface (or directly in the container configuration file):
+
+### Device Nodes to Add
+
+1. `/dev/nvidia0`
+2. `/dev/nvidiactl`
+3. `/dev/nvidia-uvm`
+4. `/dev/nvidia-uvm-tools`
+
+---
+
+### Configuration Parameters per Device
+
+When adding each of the 4 devices in the container's resource settings, use the following values:
+
+| Field | Value |
+| :--- | :--- |
+| **Device Path** | *(One of the device paths listed above)* |
+| **UID in CT** | `0` |
+| **GID in CT** | `0` |
+| **Access Mode in CT** | `0666` |
+| **Read Only** | Unchecked |
+| **Advanced** | Checked |
+
+---
+
+> **Permissions Note:** Setting the mode to `0666` ensures that internal container processes (such as Ollama or Docker) can interact directly with the GPU nodes without requiring special user or group privileges inside the CT.
+
