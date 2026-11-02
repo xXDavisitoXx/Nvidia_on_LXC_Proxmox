@@ -1,6 +1,8 @@
 # Nvidia_on_LXC_Proxmox
 
-Add propietary repositories non-free non-free-firmware on /etc/apt/sources.list.d/debian.sources:
+
+
+Add Debian13 propietary repositories non-free non-free-firmware on /etc/apt/sources.list.d/debian.sources:
 ```bash
 nano /etc/apt/sources.list.d/debian.sources 
 ```
@@ -17,8 +19,11 @@ Suites: trixie-security
 Components: main contrib non-free non-free-firmware
 Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
  ```
+☑️ Add no subscriptions porxmox reositorories
 
-Download you packet driver on Proxmox host
+☑️ Refresh and update proxmox
+
+Download your nvidia driver on Proxmox host
 Example:
 ```bash
 curl https://www.nvidia.com/es-es/drivers/details/281497/
