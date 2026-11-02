@@ -23,6 +23,12 @@ Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
 
 ☑️ Refresh and update proxmox
 
+💻:Install packets for servers(proxmox):
+Necesary to build and compiling driver
+```bash
+apt install build-essential dkms pkg-config libglvnd-dev pve-headers-$(uname -r) pkg-config libglvnd-dev
+ ```
+
 Download your nvidia driver on Proxmox host
 Example:
 ```bash
@@ -32,13 +38,8 @@ curl https://www.nvidia.com/es-es/drivers/details/281497/
 chmod +x Nvidia*
  ```
 
-Execute using ./
-
+Execute using ./ and select choices in the tutorial
 
 ```bash
-curl https://www.nvidia.com/es-es/drivers/details/281497/
- ```
-💻:Install packets for servers(proxmox):
-```bash
-apt install build-essential dkms pkg-config libglvnd-dev pve-headers-$(uname -r) pkg-config libglvnd-dev
+reboot
  ```
