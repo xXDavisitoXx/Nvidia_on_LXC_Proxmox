@@ -82,6 +82,7 @@ create your LXC first
 ```bash
 apt update
 apt dist-upgrade
+apt install lshw
 reboot
 ```
 and shutdown the machine
