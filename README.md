@@ -86,6 +86,17 @@ reboot
 ```
 and shutdown the machine
 
+Edit your LXC
+If you your lxc have ID 130 you edit:
+```bash
+nano /etc/pve/lxc/130.conf
+```
+```conf
+lxc.mount.entry: /usr/bin/nvidia-smi usr/bin/nvidia-smi none bind,optional,create=file
+lxc.mount.entry: /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.580.196.07 usr/lib/x86_64-linux-gnu/libnvidia-ml.so.580.196.07 none bind,optional,create=file
+lxc.mount.entry: /usr/lib/x86_64-linux-gnu/libnvidia-ml.so usr/lib/x86_64-linux-gnu/libnvidia-ml.so none bind,optional,create=file
+lxc.mount.entry: /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 none bind,optional,create=file
+```
 ## NVIDIA GPU Passthrough Setup for LXC (Proxmox VE)
 
 To map the NVIDIA GPU devices to the unprivileged container, add each of the following device nodes via the Proxmox web interface (or directly in the container configuration file):
